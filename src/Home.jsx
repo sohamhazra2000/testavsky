@@ -42,7 +42,7 @@ export default function Home() {
                     margin="normal"
                     variant="outlined"
                     error={errors.empid}
-                    helperText={errors.empid && "id is required"}
+                    helperText={errors.empid?.type === "required" ? "empid is required." : errors.empid?.type === "maxLength" ? "maximum length reached" : ""}
                   />
                   <TextField
                     {...register("name", { required: true, maxLength: 200})}
@@ -80,7 +80,7 @@ export default function Home() {
                     margin="normal"
                     variant="outlined"
                     error={errors.phoneno}
-                    helperText={errors.phoneno?.type === "required" ? "phone is required." : errors.phoneno?.type === "pattern" ? "Valid number is required" : ""}
+                    helperText={errors.phoneno?.type === "required" ? "phone is required." : errors.phoneno?.type === "pattern" ? "Valid number is required" :errors.phoneno?.type==="maxLength"?"maximum lenngth reached": ""}
                   />
                   <TextField
                     {...register("email", {
