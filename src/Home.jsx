@@ -73,13 +73,14 @@ export default function Home() {
                     helperText={errors.adress && "adress is required"}
                   />
                    <TextField
-                    {...register("phoneno", { required: true, maxLength: 12 })}
+                    {...register("phoneno", { required: true,
+                      pattern:/^\d+$/, maxLength: 12 })}
                     label="phoneno"
                     fullWidth
                     margin="normal"
                     variant="outlined"
                     error={errors.phoneno}
-                    helperText={errors.phoneno && "phone is required"}
+                    helperText={errors.phoneno?.type === "required" ? "phone is required." : errors.phoneno?.type === "pattern" ? "Valid number is required" : ""}
                   />
                   <TextField
                     {...register("email", {
