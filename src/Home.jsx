@@ -23,7 +23,7 @@ export default function Home() {
 
         };
         axios
-          .post(apiUrl, UpData).then((res)=>{alert(res)})
+          .post(apiUrl, UpData).then((res)=>{alert(res.data.msg)})
           
       };
       return (
