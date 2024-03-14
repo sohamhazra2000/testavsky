@@ -84,7 +84,7 @@ export default function Home() {
                   <TextField
                     {...register("email", {
                       required: true,
-                      pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                      pattern:/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
                       
                     })}
                     label="Your Email"
@@ -92,7 +92,7 @@ export default function Home() {
                     margin="normal"
                     variant="outlined"
                     error={!!errors.email}
-                    helperText={errors.email && errors.email.type === "required"  && "Email is required"||  errors.email && errors.email.type === "pattern" &&"valid email is required" }
+                    helperText={errors.email?.type === "required" ? "Email is required." : errors.email?.type === "pattern" ? "Valid email is required" : ""}
                   />
                   <Button
                     variant="contained"
